@@ -34,12 +34,14 @@ class TodoProvider extends ChangeNotifier {
     return response.body;
   }
 
-  Future deleteData() async {
+  Future deleteData(String id) async {
     final Uri restAPIURL = Uri.parse("$ENDPOINT_API/delete");
 
-    http.Response response = await http.delete(
-      restAPIURL,
-      headers: customHeaders,
-    );
+    http.Response response =
+        await http.delete(restAPIURL, headers: customHeaders, body: {
+      "id": id,
+    });
+
+    return response.body;
   }
 }
