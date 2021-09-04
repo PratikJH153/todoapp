@@ -31,7 +31,7 @@ router.post("/add", async(req, res) => {
 router.delete("/delete", async(req, res) => {
 
     const filter = {
-        "title": req.body.title,
+        "id": req.body.id,
     };
     await TodoModel.deleteOne(filter).then((data) => res.status(200).json({
         data: data,
